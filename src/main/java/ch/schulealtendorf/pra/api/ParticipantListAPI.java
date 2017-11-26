@@ -2,13 +2,11 @@ package ch.schulealtendorf.pra.api;
 
 import ch.schulealtendorf.pra.pojo.ParticipantList;
 
-import java.io.InputStream;
-
 /**
+ * Describes an api for a participant list report.
+ * 
  * @author nmaerchy
- * @version 0.0.1
+ * @version 1.0.0
  */
-public interface ParticipantListAPI {
-    
-    InputStream createReport(ParticipantList data);
+public interface ParticipantListAPI extends ReportAPI<ParticipantList> {
 }

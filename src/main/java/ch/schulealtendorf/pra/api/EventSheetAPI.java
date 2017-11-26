@@ -2,13 +2,11 @@ package ch.schulealtendorf.pra.api;
 
 import ch.schulealtendorf.pra.pojo.EventSheet;
 
-import java.io.InputStream;
-
 /**
+ * Describes an api for an event sheet report.
+ * 
  * @author nmaerchy
- * @version 0.0.1
+ * @version 1.0.0
  */
-public interface EventSheetAPI {
-    
-    InputStream createReport(EventSheet data);
+public interface EventSheetAPI extends ReportAPI<EventSheet> {
 }

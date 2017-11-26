@@ -2,13 +2,11 @@ package ch.schulealtendorf.pra.api;
 
 import ch.schulealtendorf.pra.pojo.TotalRanking;
 
-import java.io.InputStream;
-
 /**
+ * Describes an api for a total ranking.
+ * 
  * @author nmaerchy
- * @version 0.0.1
+ * @version 1.0.0
  */
-public interface TotalRankingAPI {
-    
-    InputStream createReport(TotalRanking data);
+public interface TotalRankingAPI extends ReportAPI<TotalRanking> {
 }

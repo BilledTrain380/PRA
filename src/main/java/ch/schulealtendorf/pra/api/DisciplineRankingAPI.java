@@ -2,13 +2,11 @@ package ch.schulealtendorf.pra.api;
 
 import ch.schulealtendorf.pra.pojo.DisciplineRanking;
 
-import java.io.InputStream;
-
 /**
+ * Describes an api for a singe discipline ranking.
+ * 
  * @author nmaerchy
- * @version 0.0.1
+ * @version 1.0.0
  */
-public interface DisciplineRankingAPI {
-    
-    InputStream createReport(DisciplineRanking data);
+public interface DisciplineRankingAPI extends ReportAPI<DisciplineRanking> {
 }
