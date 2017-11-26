@@ -26,11 +26,23 @@ public class DisciplineGroup {
     }
 
     public void add(Discipline discipline) {
-        throw new UnsupportedOperationException("This method is not implemented yet.");
+        if (disciplines.size() < count) {
+            disciplines.add(discipline);
+        } else {
+            throw new IllegalStateException("Can not add more disciplines than " + count);
+        }
     }
     
     public Discipline get(int index) {
-        throw new UnsupportedOperationException("This method is not implemented yet.");
+        
+        if (index < 0) {
+            throw new IllegalArgumentException("Negative index is not allowed");
+        }
+        
+        if (disciplines.size() > index) {
+            return disciplines.get(index);
+        }
+        throw new IllegalArgumentException("Can not get more disciplines than " + count + ": Discipline with index " + index + " does not exist");
     }
 
     @Override
