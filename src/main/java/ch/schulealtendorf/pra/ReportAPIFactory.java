@@ -106,7 +106,7 @@ public class ReportAPIFactory {
                 log.warning("Multiple available report api found. Which one is used is not known.");
             }
 
-            return t.get(1);
+            return t.get(0);
         }
     }
 }
