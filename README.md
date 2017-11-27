@@ -5,8 +5,8 @@ PRA is an api specification to generate reports for the [Sporttag PSA](https://g
 
 ## Usage
 
-This project provides a factory class to get the specific implementation. Make sure an implementation
-of PRA is on your classpath.
+This api provides a factory class to get the specific implementation. Make sure an implementation
+of PRA is in your dependency list.
 
 ```java
 private TotalRankingApi api = new ReportApiFactory.getTotalRanking();
@@ -26,6 +26,7 @@ To implement your own report generation you have to add this project as a depend
 This project is not available on any public repository expect Github. I recommend to use [JitPack](https://jitpack.io) to add this project as a dependency.
 
 **Step 1.** Add the JitPack repository to your build file
+
 Add it into your root `build.gradle` at the end of repositories:
 ```groovy
 allprojects {
@@ -43,13 +44,52 @@ dependencies {
 }
 ```
 
+**Step 3.** Implement the APIs you wanna support
+
+Available APIs:
+* `ch.schulealtendorf.pra.api.DisciplineGroupRankingAPI`
+* `ch.schulealtendorf.pra.api.DisciplineRankingAPI`
+* `ch.schulealtendorf.pra.api.EventSheetAPI`
+* `ch.schulealtendorf.pra.api.ParticipantListAPI`
+* `ch.schulealtendorf.pra.api.TotalRankingAPI`
+
+Example
+```java
+import ch.schulealtendorf.pra.api.EventSheetAPI;
+import ch.schulealtendorf.pra.pojo.EventSheet;
+import java.io.InputStream;
+
+public class MyEventSheetAPI implements EventSheetAPI {
+    
+    @Override
+    public InputStream createReport(EventSheet data) {
+        // Do your stuff here
+    }
+}
+```
+
+**Step 4.** Register your implementation as a service
+
+You must register your implementation in order to be found by the service loader used.
+
+1. Create a `META-INF/services` directory inside your `resources` directory
+2. Create a file with the FQDN of the interface you wanna support
+3. Write the FQDN of your implementation to the file
+
+example with gradle / maven:
+
+`src/main/resources/META-INF/services/ch.schulealtendorf.pra.api.EventSheetAPI`
+```text
+ch.schulealtendorf.report.MyCustomEventSheetAPI
+```
+
 ## Built With
 
 * [Gradle](https://gradle.org) - Dependency Management
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/BilledTrain380/PRA/tags). 
+I use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/BilledTrain380/PRA/tags). 
 
 ## Authors
 
