@@ -4,13 +4,13 @@ package ch.schulealtendorf.pra.pojo;
  * Data class for a discipline result.
  * 
  * @author nmaerchy
- * @version 1.0.0
+ * @version 2.0.0
  */
 public class Discipline {
     
     private String name = "";
     private String distance = "";
-    private double result = 0.0;
+    private Result result = new Result(Integer.MIN_VALUE);
     private int points = 0;
 
     public String getName() {
@@ -29,11 +29,11 @@ public class Discipline {
         this.distance = distance;
     }
 
-    public double getResult() {
+    public Result getResult() {
         return result;
     }
 
-    public void setResult(double result) {
+    public void setResult(Result result) {
         this.result = result;
     }
 
@@ -62,7 +62,7 @@ public class Discipline {
 
         Discipline that = (Discipline) o;
 
-        if (Double.compare(that.result, result) != 0) return false;
+        if (that.result != result) return false;
         if (points != that.points) return false;
         if (!name.equals(that.name)) return false;
         return distance.equals(that.distance);
@@ -71,11 +71,9 @@ public class Discipline {
     @Override
     public int hashCode() {
         int result1;
-        long temp;
         result1 = name.hashCode();
         result1 = 31 * result1 + distance.hashCode();
-        temp = Double.doubleToLongBits(result);
-        result1 = 31 * result1 + (int) (temp ^ (temp >>> 32));
+        result1 = 31 * result1 + result.hashCode();
         result1 = 31 * result1 + points;
         return result1;
     }

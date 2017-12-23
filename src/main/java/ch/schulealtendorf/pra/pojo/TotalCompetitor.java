@@ -2,12 +2,13 @@ package ch.schulealtendorf.pra.pojo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Data class for a competitor in total ranking.
  * 
  * @author nmaerchy
- * @version 1.0.0
+ * @version 2.0.0
  */
 public class TotalCompetitor {
     
@@ -16,7 +17,7 @@ public class TotalCompetitor {
     private String Surname = "";
     private String clazz = "";
     private int totalPoints = 0;
-    private double deletedResult = 0.0;
+    private Result deletedResult = new Result(Integer.MIN_VALUE);
     private List<Discipline> results = new ArrayList<>();
 
     public int getRank() {
@@ -59,11 +60,11 @@ public class TotalCompetitor {
         this.totalPoints = totalPoints;
     }
 
-    public double getDeletedResult() {
+    public Result getDeletedResult() {
         return deletedResult;
     }
 
-    public void setDeletedResult(double deletedResult) {
+    public void setDeletedResult(Result deletedResult) {
         this.deletedResult = deletedResult;
     }
 
@@ -92,30 +93,18 @@ public class TotalCompetitor {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         TotalCompetitor that = (TotalCompetitor) o;
-
-        if (rank != that.rank) return false;
-        if (totalPoints != that.totalPoints) return false;
-        if (Double.compare(that.deletedResult, deletedResult) != 0) return false;
-        if (!prename.equals(that.prename)) return false;
-        if (!Surname.equals(that.Surname)) return false;
-        if (!clazz.equals(that.clazz)) return false;
-        return results.equals(that.results);
+        return rank == that.rank &&
+                totalPoints == that.totalPoints &&
+                Objects.equals(prename, that.prename) &&
+                Objects.equals(Surname, that.Surname) &&
+                Objects.equals(clazz, that.clazz) &&
+                Objects.equals(deletedResult, that.deletedResult) &&
+                Objects.equals(results, that.results);
     }
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = rank;
-        result = 31 * result + prename.hashCode();
-        result = 31 * result + Surname.hashCode();
-        result = 31 * result + clazz.hashCode();
-        result = 31 * result + totalPoints;
-        temp = Double.doubleToLongBits(deletedResult);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + results.hashCode();
-        return result;
+        return Objects.hash(rank, prename, Surname, clazz, totalPoints, deletedResult, results);
     }
 }

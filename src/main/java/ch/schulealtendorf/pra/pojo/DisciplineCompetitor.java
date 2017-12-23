@@ -4,7 +4,7 @@ package ch.schulealtendorf.pra.pojo;
  * Data class for a competitor of a single discipline.
  * 
  * @author nmaerchy
- * @version 1.0.0
+ * @version 2.0.0
  */
 public class DisciplineCompetitor {
     
@@ -12,7 +12,7 @@ public class DisciplineCompetitor {
     private String prename = "";
     private String surname = "";
     private String clazz = "";
-    private Double result = 0.0;
+    private Result result = new Result(Integer.MIN_VALUE);
     private int points = 0;
 
     public int getRank() {
@@ -47,11 +47,11 @@ public class DisciplineCompetitor {
         this.clazz = clazz;
     }
 
-    public Double getResult() {
+    public Result getResult() {
         return result;
     }
 
-    public void setResult(Double result) {
+    public void setResult(Result result) {
         this.result = result;
     }
 
