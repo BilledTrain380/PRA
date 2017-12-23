@@ -8,9 +8,6 @@ import java.util.Objects;
  * The string representation is either a floating point number or a not floating point number,
  * depending on the constructor called.
  * 
- * If the constructor with the double value is used. toString() returns the string representation of the double value.
- * If the constructor with the int value is used. toString() returns the string representation of the int value.
- * 
  * @author nmaerchy
  * @version 1.0.0
  */
@@ -28,15 +25,33 @@ public class Result {
         this.intValue = value;
         this.doubleValue = Double.MIN_VALUE;
     }
-    
+
+    /**
+     * If the constructor with the double value is used, this method returns that double value.
+     * If the constructor with the int value is used, this method returns that int as double value.
+     * 
+     * @return the resulting value
+     */
     public double getAsDouble() {
-        return this.doubleValue;
-    }
-    
-    public int getAsInt() {
-        return this.intValue;
+        return this.ifDouble() ? doubleValue : intValue;
     }
 
+    /**
+     * If the constructor with the double value is used, this method returns that double value by casting it to int.
+     * If the constructor with the int value is used, this method returns that int value.
+     * 
+     * @return the resulting value
+     */
+    public int getAsInt() {
+        return this.ifInteger() ? intValue : (int) doubleValue;
+    }
+
+    /**
+     * If the constructor with the double value is used, this method returns the string representation of the double value.
+     * If the constructor with the int value is used, this method returns the string representation of the int value.
+     * 
+     * @return either the double value or the int value
+     */
     @Override
     public String toString() {
         if (doubleValue == Double.MIN_VALUE) {
@@ -58,5 +73,13 @@ public class Result {
     public int hashCode() {
 
         return Objects.hash(doubleValue, intValue);
+    }
+    
+    private boolean ifDouble() {
+        return intValue == Integer.MIN_VALUE;
+    }
+    
+    private boolean ifInteger() {
+        return doubleValue == Double.MIN_VALUE;
     }
 }
