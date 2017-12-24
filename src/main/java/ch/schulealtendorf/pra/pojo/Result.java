@@ -54,10 +54,7 @@ public class Result {
      */
     @Override
     public String toString() {
-        if (doubleValue == Double.MIN_VALUE) {
-            return String.valueOf(this.intValue);
-        }
-        return String.valueOf(doubleValue);
+        return this.ifDouble() ? String.valueOf(doubleValue) : String.valueOf(intValue);
     }
 
     @Override
