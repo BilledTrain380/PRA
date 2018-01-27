@@ -1,29 +1,26 @@
 package ch.schulealtendorf.pra.pojo;
 
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Data class for the discipline ranking.
  * 
  * @author nmaerchy
- * @version 1.0.0
+ * @version 2.0.0
  */
 public class DisciplineRanking {
     
-    private int year = 1970;
+    private Year year = Year.now();
     private boolean gender = true;
-    private int age = 1;
     private String discipline = "";
     private List<DisciplineCompetitor> competitors = new ArrayList<>();
 
-    public int getYear() {
-        return year;
-    }
+    public Year getYear() { return year; }
 
-    public void setYear(int year) {
-        this.year = year;
-    }
+    public void setYear(Year year) { this.year = year; }
 
     public boolean isGender() {
         return gender;
@@ -31,14 +28,6 @@ public class DisciplineRanking {
 
     public void setGender(boolean gender) {
         this.gender = gender;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public String getDiscipline() {
@@ -62,7 +51,6 @@ public class DisciplineRanking {
         return "DisciplineRanking{" +
                 "year=" + year +
                 ", gender=" + gender +
-                ", age=" + age +
                 ", discipline='" + discipline + '\'' +
                 ", competitors=" + competitors +
                 '}';
@@ -72,23 +60,16 @@ public class DisciplineRanking {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         DisciplineRanking that = (DisciplineRanking) o;
-
-        if (year != that.year) return false;
-        if (gender != that.gender) return false;
-        if (age != that.age) return false;
-        if (!discipline.equals(that.discipline)) return false;
-        return competitors.equals(that.competitors);
+        return gender == that.gender &&
+                Objects.equals(year, that.year) &&
+                Objects.equals(discipline, that.discipline) &&
+                Objects.equals(competitors, that.competitors);
     }
 
     @Override
     public int hashCode() {
-        int result = year;
-        result = 31 * result + (gender ? 1 : 0);
-        result = 31 * result + age;
-        result = 31 * result + discipline.hashCode();
-        result = 31 * result + competitors.hashCode();
-        return result;
+
+        return Objects.hash(year, gender, discipline, competitors);
     }
 }

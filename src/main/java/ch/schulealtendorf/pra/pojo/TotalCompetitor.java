@@ -10,7 +10,6 @@ import java.util.Objects;
  */
 public class TotalCompetitor {
     
-    private int rank = 1;
     private String prename = "";
     private String Surname = "";
     private String clazz = "";
@@ -20,14 +19,6 @@ public class TotalCompetitor {
     private Discipline korbeinwurf = new Discipline();
     private Discipline seilspringen = new Discipline();
     private Discipline weitsprung = new Discipline();
-
-    public int getRank() {
-        return rank;
-    }
-
-    public void setRank(int rank) {
-        this.rank = rank;
-    }
 
     public String getPrename() {
         return prename;
@@ -80,7 +71,6 @@ public class TotalCompetitor {
     @Override
     public String toString() {
         return "TotalCompetitor{" +
-                "rank=" + rank +
                 ", prename='" + prename + '\'' +
                 ", Surname='" + Surname + '\'' +
                 ", clazz='" + clazz + '\'' +
@@ -98,8 +88,7 @@ public class TotalCompetitor {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TotalCompetitor that = (TotalCompetitor) o;
-        return rank == that.rank &&
-                Objects.equals(prename, that.prename) &&
+        return Objects.equals(prename, that.prename) &&
                 Objects.equals(Surname, that.Surname) &&
                 Objects.equals(clazz, that.clazz) &&
                 Objects.equals(schelllauf, that.schelllauf) &&
@@ -113,6 +102,6 @@ public class TotalCompetitor {
     @Override
     public int hashCode() {
 
-        return Objects.hash(rank, prename, Surname, clazz, schelllauf, ballwurf, ballzielWurf, korbeinwurf, seilspringen, weitsprung);
+        return Objects.hash(prename, Surname, clazz, schelllauf, ballwurf, ballzielWurf, korbeinwurf, seilspringen, weitsprung);
     }
 }

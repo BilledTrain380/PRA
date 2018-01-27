@@ -10,17 +10,12 @@ import java.util.Objects;
  */
 public class DisciplineGroupCompetitor {
     
-    private int rank = 1;
     private String prename = "";
     private String surname = "";
     private String clazz = "";
     private Discipline schnelllauf = new Discipline();
     private Discipline weitsprung = new Discipline();
     private Discipline ballwurf = new Discipline();
-
-    public int getRank() { return rank; }
-
-    public void setRank(int rank) { this.rank = rank; }
 
     public String getPrename() { return prename; }
 
@@ -49,7 +44,6 @@ public class DisciplineGroupCompetitor {
     @Override
     public String toString() {
         return "DisciplineGroupCompetitor{" +
-                "rank=" + rank +
                 ", prename='" + prename + '\'' +
                 ", surname='" + surname + '\'' +
                 ", clazz='" + clazz + '\'' +
@@ -64,8 +58,7 @@ public class DisciplineGroupCompetitor {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DisciplineGroupCompetitor that = (DisciplineGroupCompetitor) o;
-        return rank == that.rank &&
-                Objects.equals(prename, that.prename) &&
+        return Objects.equals(prename, that.prename) &&
                 Objects.equals(surname, that.surname) &&
                 Objects.equals(clazz, that.clazz) &&
                 Objects.equals(schnelllauf, that.schnelllauf) &&
@@ -76,6 +69,6 @@ public class DisciplineGroupCompetitor {
     @Override
     public int hashCode() {
 
-        return Objects.hash(rank, prename, surname, clazz, schnelllauf, weitsprung, ballwurf);
+        return Objects.hash(prename, surname, clazz, schnelllauf, weitsprung, ballwurf);
     }
 }
