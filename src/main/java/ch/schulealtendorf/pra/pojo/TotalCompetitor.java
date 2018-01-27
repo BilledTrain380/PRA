@@ -1,14 +1,12 @@
 package ch.schulealtendorf.pra.pojo;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 /**
  * Data class for a competitor in total ranking.
  * 
  * @author nmaerchy
- * @version 2.0.0
+ * @version 3.0.0
  */
 public class TotalCompetitor {
     
@@ -17,8 +15,12 @@ public class TotalCompetitor {
     private String Surname = "";
     private String clazz = "";
     private int totalPoints = 0;
-    private Result deletedResult = new Result(Integer.MIN_VALUE);
-    private List<Discipline> results = new ArrayList<>();
+    private Discipline schelllauf = new Discipline();
+    private Discipline ballwurf = new Discipline();
+    private Discipline ballzielWurf = new Discipline();
+    private Discipline korbeinwurf = new Discipline();
+    private Discipline seilspringen = new Discipline();
+    private Discipline weitsprung = new Discipline();
 
     public int getRank() {
         return rank;
@@ -60,21 +62,29 @@ public class TotalCompetitor {
         this.totalPoints = totalPoints;
     }
 
-    public Result getDeletedResult() {
-        return deletedResult;
-    }
+    public Discipline getSchelllauf() { return schelllauf; }
 
-    public void setDeletedResult(Result deletedResult) {
-        this.deletedResult = deletedResult;
-    }
+    public void setSchelllauf(Discipline schelllauf) { this.schelllauf = schelllauf; }
 
-    public List<Discipline> getResults() {
-        return results;
-    }
+    public Discipline getBallwurf() { return ballwurf; }
 
-    public void setResults(List<Discipline> results) {
-        this.results = results;
-    }
+    public void setBallwurf(Discipline ballwurf) { this.ballwurf = ballwurf; }
+
+    public Discipline getBallzielWurf() { return ballzielWurf; }
+
+    public void setBallzielWurf(Discipline ballzielWurf) { this.ballzielWurf = ballzielWurf; }
+
+    public Discipline getKorbeinwurf() { return korbeinwurf; }
+
+    public void setKorbeinwurf(Discipline korbeinwurf) { this.korbeinwurf = korbeinwurf; }
+
+    public Discipline getSeilspringen() { return seilspringen; }
+
+    public void setSeilspringen(Discipline seilspringen) { this.seilspringen = seilspringen; }
+
+    public Discipline getWeitsprung() { return weitsprung; }
+
+    public void setWeitsprung(Discipline weitsprung) { this.weitsprung = weitsprung; }
 
     @Override
     public String toString() {
@@ -84,8 +94,12 @@ public class TotalCompetitor {
                 ", Surname='" + Surname + '\'' +
                 ", clazz='" + clazz + '\'' +
                 ", totalPoints=" + totalPoints +
-                ", deletedResult=" + deletedResult +
-                ", results=" + results +
+                ", schelllauf=" + schelllauf +
+                ", ballwurf=" + ballwurf +
+                ", ballzielWurf=" + ballzielWurf +
+                ", korbeinwurf=" + korbeinwurf +
+                ", seilspringen=" + seilspringen +
+                ", weitsprung=" + weitsprung +
                 '}';
     }
 
@@ -99,12 +113,17 @@ public class TotalCompetitor {
                 Objects.equals(prename, that.prename) &&
                 Objects.equals(Surname, that.Surname) &&
                 Objects.equals(clazz, that.clazz) &&
-                Objects.equals(deletedResult, that.deletedResult) &&
-                Objects.equals(results, that.results);
+                Objects.equals(schelllauf, that.schelllauf) &&
+                Objects.equals(ballwurf, that.ballwurf) &&
+                Objects.equals(ballzielWurf, that.ballzielWurf) &&
+                Objects.equals(korbeinwurf, that.korbeinwurf) &&
+                Objects.equals(seilspringen, that.seilspringen) &&
+                Objects.equals(weitsprung, that.weitsprung);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(rank, prename, Surname, clazz, totalPoints, deletedResult, results);
+
+        return Objects.hash(rank, prename, Surname, clazz, totalPoints, schelllauf, ballwurf, ballzielWurf, korbeinwurf, seilspringen, weitsprung);
     }
 }
