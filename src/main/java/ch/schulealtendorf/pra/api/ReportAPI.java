@@ -6,7 +6,7 @@ import java.io.InputStream;
  * Describes an api that generates a report with the given data.
  * 
  * @author nmaerchy
- * @version 1.0.0
+ * @version 1.1.0
  */
 public interface ReportAPI<T> {
 
@@ -18,5 +18,5 @@ public interface ReportAPI<T> {
      * @return the generated report as an input stream
      * @throws ReportAPIException if something went wrong during the report generation
      */
-    InputStream createReport(T data);
+    InputStream createReport(T data) throws ReportAPIException;
 }
