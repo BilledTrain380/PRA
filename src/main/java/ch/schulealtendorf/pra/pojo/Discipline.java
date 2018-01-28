@@ -16,7 +16,7 @@ public class Discipline {
     private int points = 0;
 
     public Optional<String> getDistance() {
-        return Optional.of(distance);
+        return Optional.ofNullable(distance);
     }
 
     public void setDistance(String distance) {
