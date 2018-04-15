@@ -55,7 +55,7 @@ public class Result {
      */
     @Override
     public String toString() {
-        DecimalFormat formatter = new DecimalFormat("#.##");
+        DecimalFormat formatter = new DecimalFormat("#0.00");
         return this.ifDouble() ? formatter.format(doubleValue) : String.valueOf(intValue);
     }
 
