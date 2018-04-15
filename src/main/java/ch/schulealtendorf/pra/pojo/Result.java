@@ -1,5 +1,6 @@
 package ch.schulealtendorf.pra.pojo;
 
+import java.text.DecimalFormat;
 import java.util.Objects;
 
 /**
@@ -54,7 +55,8 @@ public class Result {
      */
     @Override
     public String toString() {
-        return this.ifDouble() ? String.valueOf(doubleValue) : String.valueOf(intValue);
+        DecimalFormat formatter = new DecimalFormat("#.##");
+        return this.ifDouble() ? formatter.format(doubleValue) : String.valueOf(intValue);
     }
 
     @Override
