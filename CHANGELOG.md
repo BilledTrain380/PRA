@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2018-06-30
+
+### Added
+* startlist api - generate the startlist of the tournament
+
 ## 1.0.0 - 2018-06-11
 
 ### Added
@@ -15,4 +20,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * participant list api - to generate a participant list of a single sport
 * event sheet api - to generate sheets for a discipline to fill in the results of competitors
 
-[Unreleased]: https://github.com/BilledTrain380/PRA/compare/1.0.0...HEAD
+[Unreleased]: https://github.com/BilledTrain380/PRA/compare/1.1.0...HEAD
+[1.1.0]: https://github.com/BilledTrain380/PRA/compare/1.0.0...1.1.0
