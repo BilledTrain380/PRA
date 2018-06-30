@@ -19,6 +19,7 @@ The following APIs are available:
 * **total ranking api** - to generate the total ranking for all disciplines
 * **participant list api** - to generate a participant list of a single sport
 * **event sheet api** - to generate sheets for a discipline to fill in the results of competitors
+* **start list api** - to generate a start list of the competitors
 
 ## Implement your own
 
@@ -52,6 +53,7 @@ Available APIs:
 * `ch.schulealtendorf.pra.api.EventSheetAPI`
 * `ch.schulealtendorf.pra.api.ParticipantListAPI`
 * `ch.schulealtendorf.pra.api.TotalRankingAPI`
+* `ch.schulealtendorf.pra.api.StarListAPI`
 
 Example
 ```java
