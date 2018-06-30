@@ -1,17 +1,19 @@
 package ch.schulealtendorf.pra.pojo;
 
+import java.util.Optional;
+
 /**
  * Data class for competitors used in a event sheet.
  * 
  * @author nmaerchy
- * @version 1.0.0
+ * @version 1.1.0
  */
 public class Competitor {
     
     private int startnumber = 1;
     private String prename = "";
     private String surname = "";
-    private String distance = "";
+    private String distance = null;
 
     public int getStartnumber() {
         return startnumber;
@@ -37,8 +39,8 @@ public class Competitor {
         this.surname = surname;
     }
 
-    public String getDistance() {
-        return distance;
+    public Optional<String> getDistance() {
+        return Optional.ofNullable(distance);
     }
 
     public void setDistance(String distance) {

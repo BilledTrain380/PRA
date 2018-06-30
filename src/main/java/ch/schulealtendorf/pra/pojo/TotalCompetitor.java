@@ -1,31 +1,24 @@
 package ch.schulealtendorf.pra.pojo;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
 /**
  * Data class for a competitor in total ranking.
  * 
  * @author nmaerchy
- * @version 1.0.0
+ * @version 3.0.0
  */
 public class TotalCompetitor {
     
-    private int rank = 1;
     private String prename = "";
     private String Surname = "";
     private String clazz = "";
-    private int totalPoints = 0;
-    private double deletedResult = 0.0;
-    private List<Discipline> results = new ArrayList<>();
-
-    public int getRank() {
-        return rank;
-    }
-
-    public void setRank(int rank) {
-        this.rank = rank;
-    }
+    private Discipline schelllauf = new Discipline();
+    private Discipline ballwurf = new Discipline();
+    private Discipline ballzielWurf = new Discipline();
+    private Discipline korbeinwurf = new Discipline();
+    private Discipline seilspringen = new Discipline();
+    private Discipline weitsprung = new Discipline();
 
     public String getPrename() {
         return prename;
@@ -51,40 +44,42 @@ public class TotalCompetitor {
         this.clazz = clazz;
     }
 
-    public int getTotalPoints() {
-        return totalPoints;
-    }
+    public Discipline getSchelllauf() { return schelllauf; }
 
-    public void setTotalPoints(int totalPoints) {
-        this.totalPoints = totalPoints;
-    }
+    public void setSchelllauf(Discipline schelllauf) { this.schelllauf = schelllauf; }
 
-    public double getDeletedResult() {
-        return deletedResult;
-    }
+    public Discipline getBallwurf() { return ballwurf; }
 
-    public void setDeletedResult(double deletedResult) {
-        this.deletedResult = deletedResult;
-    }
+    public void setBallwurf(Discipline ballwurf) { this.ballwurf = ballwurf; }
 
-    public List<Discipline> getResults() {
-        return results;
-    }
+    public Discipline getBallzielWurf() { return ballzielWurf; }
 
-    public void setResults(List<Discipline> results) {
-        this.results = results;
-    }
+    public void setBallzielWurf(Discipline ballzielWurf) { this.ballzielWurf = ballzielWurf; }
+
+    public Discipline getKorbeinwurf() { return korbeinwurf; }
+
+    public void setKorbeinwurf(Discipline korbeinwurf) { this.korbeinwurf = korbeinwurf; }
+
+    public Discipline getSeilspringen() { return seilspringen; }
+
+    public void setSeilspringen(Discipline seilspringen) { this.seilspringen = seilspringen; }
+
+    public Discipline getWeitsprung() { return weitsprung; }
+
+    public void setWeitsprung(Discipline weitsprung) { this.weitsprung = weitsprung; }
 
     @Override
     public String toString() {
         return "TotalCompetitor{" +
-                "rank=" + rank +
                 ", prename='" + prename + '\'' +
                 ", Surname='" + Surname + '\'' +
                 ", clazz='" + clazz + '\'' +
-                ", totalPoints=" + totalPoints +
-                ", deletedResult=" + deletedResult +
-                ", results=" + results +
+                ", schelllauf=" + schelllauf +
+                ", ballwurf=" + ballwurf +
+                ", ballzielWurf=" + ballzielWurf +
+                ", korbeinwurf=" + korbeinwurf +
+                ", seilspringen=" + seilspringen +
+                ", weitsprung=" + weitsprung +
                 '}';
     }
 
@@ -92,30 +87,21 @@ public class TotalCompetitor {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         TotalCompetitor that = (TotalCompetitor) o;
-
-        if (rank != that.rank) return false;
-        if (totalPoints != that.totalPoints) return false;
-        if (Double.compare(that.deletedResult, deletedResult) != 0) return false;
-        if (!prename.equals(that.prename)) return false;
-        if (!Surname.equals(that.Surname)) return false;
-        if (!clazz.equals(that.clazz)) return false;
-        return results.equals(that.results);
+        return Objects.equals(prename, that.prename) &&
+                Objects.equals(Surname, that.Surname) &&
+                Objects.equals(clazz, that.clazz) &&
+                Objects.equals(schelllauf, that.schelllauf) &&
+                Objects.equals(ballwurf, that.ballwurf) &&
+                Objects.equals(ballzielWurf, that.ballzielWurf) &&
+                Objects.equals(korbeinwurf, that.korbeinwurf) &&
+                Objects.equals(seilspringen, that.seilspringen) &&
+                Objects.equals(weitsprung, that.weitsprung);
     }
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = rank;
-        result = 31 * result + prename.hashCode();
-        result = 31 * result + Surname.hashCode();
-        result = 31 * result + clazz.hashCode();
-        result = 31 * result + totalPoints;
-        temp = Double.doubleToLongBits(deletedResult);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + results.hashCode();
-        return result;
+
+        return Objects.hash(prename, Surname, clazz, schelllauf, ballwurf, ballzielWurf, korbeinwurf, seilspringen, weitsprung);
     }
 }

@@ -1,6 +1,7 @@
 package ch.schulealtendorf.pra;
 
 import ch.schulealtendorf.pra.api.*;
+import com.sun.tools.javadoc.Start;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +48,12 @@ public class ReportAPIFactory {
     
     public static EventSheetAPI getEventSheet() {
         return instance(eventSheetAPI, EventSheetAPI.class);
+    }
+
+    private static StartListAPI startListAPI = null;
+
+    public static StartListAPI getStartList() {
+        return instance(startListAPI, StartListAPI.class);
     }
 
     /**
